@@ -1,85 +1,142 @@
-# Express Tasks API
+# Task Management API
 
-A simple task management API built with Express.js.
+A simple Task Management API built using **Node.js, Express, and MySQL** with user authentication, CRUD operations, and Swagger documentation.
 
-## Table of Contents
+## Features
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
-- [License](#license)
+- User authentication (Signup & Login)
+- Task management (Create, Read, Update, Soft Delete)
+- MySQL database integration
+- API documentation with Swagger
+- Error handling with try-catch
 
-## Installation
+---
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/KHUSHAL966/express-tasks-api.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd express-tasks-api
-   ```
-3. Install the dependencies:
-   ```bash
-   npm install
-   ```
+## 🚀 Installation & Setup
 
-## Usage
+### 1️⃣ Clone the repository
 
-1. Start the development server using nodemon:
-   ```bash
-   nodemon server.js
-   ```
-2. The API will be available at `http://localhost:3000`.
+```bash
+git clone https://github.com/your-repo/task-management-api.git
+cd task-management-api
+```
 
-## API Endpoints
+### 2️⃣ Install dependencies
 
-### Tasks
+```bash
+npm install
+```
 
-- **Get all tasks**
-  - **URL:** `/tasks`
-  - **Method:** `GET`
-  - **Description:** Retrieve a list of all tasks.
-  
-- **Get a task by ID**
-  - **URL:** `/tasks/:id`
-  - **Method:** `GET`
-  - **Description:** Retrieve a task by its ID.
-  
-- **Create a new task**
-  - **URL:** `/tasks`
-  - **Method:** `POST`
-  - **Description:** Create a new task.
-  - **Request Body:**
-    ```json
-    {
-      "title": "Task title",
-      "description": "Task description"
-    }
-    ```
-  
-- **Update a task**
-  - **URL:** `/tasks/:id`
-  - **Method:** `PUT`
-  - **Description:** Update an existing task by its ID.
-  - **Request Body:**
-    ```json
-    {
-      "title": "Updated task title",
-      "description": "Updated task description"
-    }
-    ```
+### 3️⃣ Configure environment variables
 
-- **Delete a task**
-  - **URL:** `/tasks/:id`
-  - **Method:** `DELETE`
-  - **Description:** Delete a task by its ID.
+Create a **.env** file in the root directory and add:
 
-## Contributing
+```env
+PORT=5000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=task_management
+JWT_SECRET=your_secret_key
+```
 
-Contributions are welcome! Please open an issue or submit a pull request for any changes.
+### 4️⃣ Start the server
 
-## License
+```bash
+npm run dev  # Start with Nodemon
+type node server.js # Start normally
+```
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+### 5️⃣ Open Swagger API Docs
+
+Go to: **[http://localhost:5000/api-docs](http://localhost:5000/api-docs)**
+
+---
+
+## 📌 API Endpoints
+
+### **🔹 Auth Routes**
+
+| Method | Endpoint           | Description               |
+| ------ | ------------------ | ------------------------- |
+| POST   | `/api/auth/signup` | Register a new user       |
+| POST   | `/api/auth/login`  | Login and get a JWT token |
+
+### **🔹 Task Routes (Protected)**
+
+| Method | Endpoint         | Description                     |
+| ------ | ---------------- | ------------------------------- |
+| GET    | `/api/tasks`     | Get all tasks (with pagination) |
+| GET    | `/api/tasks/:id` | Get task by ID                  |
+| POST   | `/api/tasks`     | Create a new task               |
+| PATCH  | `/api/tasks/:id` | Update task details             |
+| DELETE | `/api/tasks/:id` | Soft delete a task              |
+
+🔒 **Note:** Add `Authorization: Bearer <JWT_TOKEN>` in the headers for protected routes.
+
+---
+
+## 📂 Project Structure
+
+```
+📦 task-management-api
+├── 📂 config
+│   ├── db.js           # MySQL database connection
+├── 📂 controllers
+│   ├── authController.js  # Handles user authentication
+│   ├── taskController.js  # Handles CRUD operations for tasks
+├── 📂 middleware
+│   ├── authMiddleware.js  # Middleware for token authentication
+├── 📂 routes
+│   ├── authRoutes.js  # Routes for authentication
+│   ├── taskRoutes.js  # Routes for tasks
+├── 📂 models
+│   ├── taskModel.js   # Task model for database interactions
+│   ├── userModel.js   # User model for database interactions
+├── swagger.js         # Swagger API documentation setup
+├── server.js          # Main Express server file
+├── package.json       # Dependencies and scripts
+├── .env               # Environment variables
+└── README.md          # Project documentation
+```
+
+---
+
+## 🛠 Technologies Used
+
+- **Node.js & Express.js** - Backend framework
+- **MySQL** - Relational database
+- **JWT** - Authentication
+- **bcrypt & md5** - Password hashing
+- **Swagger** - API documentation
+
+---
+
+## 🛡️ Error Handling
+
+All routes include **try-catch** blocks to handle errors gracefully. Example:
+
+```javascript
+try {
+  const tasks = await pool.query('SELECT * FROM tasks');
+  res.status(200).json(tasks);
+} catch (error) {
+  res.status(500).json({ message: 'Database error' });
+}
+```
+
+---
+
+## 📌 Future Improvements
+
+✅ Unit testing with Jest\
+✅ Role-based access control\
+✅ Docker support
+
+---
+
+## 📞 Support
+
+For any issues, feel free to raise an issue on **GitHub** or contact me at khu 
+
+llasod\@gmail
