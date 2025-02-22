@@ -65,7 +65,7 @@ nodemon server.js
 
 ## 📖 API Documentation
 After running the server, you can access the interactive API documentation at:
-- **[Swagger UI - API Docs](http://localhost:3000/api-docs)**
+sorry sooon docyumatation will come with test guide
 
 ## 🔒 Authentication Flow
 1. **User signs up using `/auth/signup`** with valid details.
