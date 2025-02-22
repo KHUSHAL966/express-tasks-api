@@ -10,6 +10,7 @@ Welcome to the **Express Tasks API**, a powerful and scalable task management sy
 - **MySQL Database Integration:** Persistent data storage with structured querying.
 - **Swagger API Documentation:** Well-documented endpoints for easy testing and integration.
 - **Modular Code Structure:** Clean and maintainable architecture.
+- **Postman Collection:** A pre-configured collection for testing API endpoints.
 
 ## 📌 Tech Stack
 - **Backend:** Node.js, Express.js
@@ -65,13 +66,37 @@ nodemon server.js
 
 ## 📖 API Documentation
 After running the server, you can access the interactive API documentation at:
-sorry sooon docyumatation will come with test guide
+- this moment not available we soon upload with test cases
 
 ## 🔒 Authentication Flow
 1. **User signs up using `/auth/signup`** with valid details.
 2. **Logs in using `/auth/login`** to receive a JWT token.
 3. **Includes the JWT token** in the `Authorization` header for protected routes.
 4. **Access secured endpoints** like `/tasks` using the bearer token.
+
+## 🏗 Folder Structure
+```
+├── Express Tasks API.postman_collection.json
+├── package-lock.json
+├── package.json
+├── README.md
+├── src
+│   ├── config
+│   │   └── db.js
+│   ├── controllers
+│   │   ├── auth.controller.js
+│   │   └── tasks.controller.js
+│   ├── middleware
+│   │   └── auth.middleware.js
+│   ├── models
+│   │   ├── task.models.js
+│   │   └── user.models.js
+│   ├── routes
+│   │   ├── auth.routes.js
+│   │   └── tasks.routes.js
+│   └── server.js
+└── tasks_db.sql
+```
 
 ## 💾 Database Schema
 ### 📌 Users Table
