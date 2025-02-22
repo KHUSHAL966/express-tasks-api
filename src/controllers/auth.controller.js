@@ -24,22 +24,17 @@ console.log(password)
 };
 
 
-const saltRounds = 10; // Number of salt rounds for hashing
+const saltRounds = 10; 
 
 export const signup = async (req, res) => {
   try {
     const { username, password } = req.body;
-
-    // Check if the user already exists
     const existingUser = await findByUsername(username);
     if (existingUser) {
       return res.status(400).json({ message: "Username already exists" });
     }
-
-    // Hash the password before saving
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-    // Create new user
+    
     const userId = await createUser(username, hashedPassword);
 
     res.status(201).json({ message: "User registered successfully", userId });
